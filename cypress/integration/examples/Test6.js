@@ -4,7 +4,7 @@ describe('Handle the column', function () {
 
     beforeEach(() => {
         cy
-            .visit('https://rahulshettyacademy.com/AutomationPractice/')
+            .visit(Cypress.env('url') + '/AutomationPractice/')
     })
 
     it('Check position in column', function () {

@@ -3,7 +3,7 @@
 describe('Handling Child Windows', function () {
     it('Should handle child window', function () {
         cy
-            .visit('https://rahulshettyacademy.com/AutomationPractice/')
+            .visit(Cypress.env('url') + '/AutomationPractice/')
         cy
             .get('#opentab')
             .invoke('removeAttr', 'target')

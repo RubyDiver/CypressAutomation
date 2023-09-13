@@ -5,7 +5,7 @@ describe('Handling alerts, popups and child windows', function () {
 
     beforeEach(() => {
 
-        cy.visit('https://rahulshettyacademy.com/AutomationPractice/')
+        cy.visit(Cypress.env('url') + '/AutomationPractice/')
     })
 
     it('catch window alert', function () {

@@ -17,7 +17,7 @@ describe('Handle Frameworks', function () {
         const productPage = new ProductPage()
 
 
-        cy.visit('https://rahulshettyacademy.com/angularpractice/')
+        cy.visit(Cypress.env('url') + 'angularpractice/')
         homePage.get_edit_box()
             .type(this.data.firstName)
         homePage.get_gender()

@@ -5,7 +5,7 @@ describe('Check checkbox', function() {
 
     beforeEach(() => {
 
-        cy.visit('https://rahulshettyacademy.com/AutomationPractice/')
+        cy.visit(Cypress.env('url') + '/AutomationPractice/')
       
       })
       
@@ -28,7 +28,8 @@ describe('Check checkbox', function() {
     it('check dynamic dropdown', function() {
         cy.get('#autocomplete').type('ind')
         cy.get('.ui-menu-item').each(($el, index, $list) => {
-            if($el.text() === "India")
+            const countryName = $el.text()
+            if(countryName == "India")
             {
                $el.click()
             }
