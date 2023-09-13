@@ -12,6 +12,7 @@ describe('Handle Frameworks', function () {
     })
 
     it('handle framework', function () {
+        Cypress.config('defaultCommandTimeout', 8000)
         const homePage = new HomePage()
         const productPage = new ProductPage()
 
@@ -35,12 +36,33 @@ describe('Handle Frameworks', function () {
 
         productPage.get_checkout_button()
             .click()
+
+        var sum = 0
+        cy.get('tr td:nth-child(4) strong').each(($el, index, $list) => {
+            const amount = $el.text()
+            var res = amount.split(" ")
+            res = res[1].trim()
+            sum = Number(sum) + Number(res)
+        }).then(function () {
+            cy.log(sum)
+        })
+        cy.get('h3 strong').then(function (element) {
+            const amount = element.text()
+            var res = amount.split(" ")
+            var total = res[1].trim()
+            expect(Number(total)).to.equal(sum)
+        })
         cy.get('.btn-success')
             .click()
         cy.get('#country')
             .type('India')
         cy.get('.suggestions > ul > li > a')
             .click()
+        cy.get('.checkbox > label')
+            .click()
+        cy.get('input[type="submit"]')
+            .click()
+        cy.get('.alert')
+            .contains('Success! Thank you! Your order will be delivered in next few weeks :-).')
     })
-
-})
+})  
