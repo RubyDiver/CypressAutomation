@@ -1,5 +1,6 @@
 /// <reference  types="Cypress" />
-import HomePage from "../page_objects/home_page"
+import HomePage from "../page_objects/homePage"
+import ProductPage from "../page_objects/productPage"
 
 describe('Handle Frameworks', function () {
 
@@ -11,26 +12,35 @@ describe('Handle Frameworks', function () {
     })
 
     it('handle framework', function () {
-        const home_page = new HomePage()
+        const homePage = new HomePage()
+        const productPage = new ProductPage()
+
 
         cy.visit('https://rahulshettyacademy.com/angularpractice/')
-        home_page.get_edit_box()
+        homePage.get_edit_box()
             .type(this.data.firstName)
-        home_page.get_gender()
+        homePage.get_gender()
             .select(this.data.gender)
-        home_page.get_two_way_data_binding()
+        homePage.get_two_way_data_binding()
             .should('have.value', this.data.firstName)
-        home_page.get_edit_box()
+        homePage.get_edit_box()
             .should('have.attr', 'minlength', '2')
-        home_page.get_enterpreneaur()
+        homePage.get_enterpreneaur()
             .should('be.disabled')
-        home_page.get_shop_tab()
+        homePage.get_shop_tab()
             .click()
         this.data.phoneName.forEach(function (element) {
             cy.selectProduct(element)
         })
-        cy.contains('a.btn.btn-primary', 'Checkout (2)')
 
+        productPage.get_checkout_button()
+            .click()
+        cy.get('.btn-success')
+            .click()
+        cy.get('#country')
+            .type('India')
+        cy.get('.suggestions > ul > li > a')
+            .click()
     })
 
-}) 
+})

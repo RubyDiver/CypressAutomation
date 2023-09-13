@@ -8,6 +8,7 @@ describe('Check checkbox', function() {
         cy.visit('https://rahulshettyacademy.com/AutomationPractice/')
       
       })
+      
     // Check checkbox 
 
     it('check checkbox', function() {
