@@ -1,5 +1,5 @@
 /// <reference  types="Cypress" />
-
+import HomePage from "../page_objects/home_page"
 
 describe('Handle Frameworks', function () {
 
@@ -11,18 +11,20 @@ describe('Handle Frameworks', function () {
     })
 
     it('handle framework', function () {
+        const home_page = new HomePage()
+
         cy.visit('https://rahulshettyacademy.com/angularpractice/')
-        cy.get('.form-control[name*="name"]')
+        home_page.get_edit_box()
             .type(this.data.firstName)
-        cy.get('#exampleFormControlSelect1')
+        home_page.get_gender()
             .select(this.data.gender)
-        cy.get('input[name="name"]:nth-child(1)')
+        home_page.get_two_way_data_binding()
             .should('have.value', this.data.firstName)
-        cy.get('.form-control[name*="name"]')
+        home_page.get_edit_box()
             .should('have.attr', 'minlength', '2')
-        cy.get('input[value="option3"]')
+        home_page.get_enterpreneaur()
             .should('be.disabled')
-        cy.get(':nth-child(2) > .nav-link')
+        home_page.get_shop_tab()
             .click()
         this.data.phoneName.forEach(function (element) {
             cy.selectProduct(element)
@@ -30,5 +32,5 @@ describe('Handle Frameworks', function () {
         cy.contains('a.btn.btn-primary', 'Checkout (2)')
 
     })
-    
+
 }) 
