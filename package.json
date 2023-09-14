@@ -4,8 +4,9 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "cypress:open": "cypress open"
+    "test": "node_modules/.bin/cypress run",
+    "test8": "npm run test -- --spec cypress/integration/examples/Test8.js",
+    "headTest": "npm run test -- --headed"
   },
   "author": "",
   "license": "ISC",
