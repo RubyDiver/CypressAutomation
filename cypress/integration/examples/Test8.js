@@ -12,7 +12,7 @@ describe('Handle Frameworks', function () {
     })
 
     it('handle framework', function () {
-        Cypress.config('defaultCommandTimeout', 8000)
+        Cypress.config('defaultCommandTimeout', 8000)   
         const homePage = new HomePage()
         const productPage = new ProductPage()
 
