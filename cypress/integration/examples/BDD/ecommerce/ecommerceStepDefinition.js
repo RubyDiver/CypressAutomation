@@ -1,6 +1,6 @@
 import HomePage from '../../../page_objects/homePage'
 import ProductPage from '../../../page_objects/productPage'
-import { Given, When, And, Then } from "@badeball/cypress-cucumber-preprocessor";
+import { Given, When, Then } from "@badeball/cypress-cucumber-preprocessor";
 
 const homePage = new HomePage()
 const productPage = new ProductPage()
@@ -49,7 +49,7 @@ Then('Select the country, submit and verify thank you', function () {
     cy.get('.suggestions > ul > li > a')
         .click()
     cy.get('.checkbox > label')
-        .click()
+        .click({force: true})
     cy.get('input[type="submit"]')
         .click()
     cy.get('.alert')
