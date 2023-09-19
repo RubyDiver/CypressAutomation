@@ -13,7 +13,8 @@ describe('My first test', function () {
     })
     it('show 4 products after type ca in search box', function () {
         cy.visit(Cypress.env('url') + '/seleniumPractise/#/')
-        cy.get('.search-keyword').type('ca')
+        cy.get('.search-keyword')
+            .type('ca')
         cy.wait(2000)
         cy.get('.products')
             .find('.product')
